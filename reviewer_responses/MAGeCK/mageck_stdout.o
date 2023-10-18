@@ -1,0 +1,80 @@
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@node-13-20>
+Subject: Job 36385652: <HAP1_MAGeCK> in cluster <farm5> Done
+
+Job <HAP1_MAGeCK> was submitted from host <farm5-head1> by user <vo1> in cluster <farm5> at Tue Oct 17 09:35:53 2023
+Job was executed on host(s) <node-13-20>, in queue <normal>, as user <vo1> in cluster <farm5> at Tue Oct 17 09:35:55 2023
+</nfs/users/nfs_v/vo1> was used as the home directory.
+</lustre/scratch124/casm/team113/users/vo1/hap1_wt_vs_lig4_daSilva_crispr_screen> was used as the working directory.
+Started at Tue Oct 17 09:35:55 2023
+Terminated at Tue Oct 17 09:37:16 2023
+Results reported at Tue Oct 17 09:37:16 2023
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#BSUB -q normal
+#BSUB -J HAP1_MAGeCK
+#BSUB -R "select[mem>5000] rusage[mem=5000] span[hosts=1]"
+#BSUB -M 5000
+#BSUB -oo /lustre/scratch124/casm/team113/users/vo1/hap1_wt_vs_lig4_daSilva_crispr_screen/MAGeCK/mageck_stdout.o
+#BSUB -eo /lustre/scratch124/casm/team113/users/vo1/hap1_wt_vs_lig4_daSilva_crispr_screen/MAGeCK/mageck_stderr.e
+
+# Load MAGeCK module which uses Singularity container
+module load /software/team113/modules/modulefiles/mageck/0.5.9.3
+
+# Run MAGeCK comparing HAP1 WT to Plasmid
+mageck test \
+	--norm-method 'none' \
+	--remove-zero 'none' \
+	-t 'WT_rep1,WT_rep2,WT_rep3' \
+	-c 'plasmid' \
+	-k '/lustre/scratch124/casm/team113/users/vo1/hap1_wt_vs_lig4_daSilva_crispr_screen/daSilva_normalised_counts_for_mageck.tsv' \
+	-n '/lustre/scratch124/casm/team113/users/vo1/hap1_wt_vs_lig4_daSilva_crispr_screen/MAGeCK/WT_vs_plasmid'
+
+# Run MAGeCK comparing HAP1 LIG4 to Plasmid
+mageck test \
+	--norm-method 'none' \
+	--remove-zero 'none' \
+	-t 'LIG4_rep1,LIG4_rep2,LIG4_rep3' \
+	-c 'plasmid' \
+	-k '/lustre/scratch124/casm/team113/users/vo1/hap1_wt_vs_lig4_daSilva_crispr_screen/daSilva_normalised_counts_for_mageck.tsv' \
+	-n '/lustre/scratch124/casm/team113/users/vo1/hap1_wt_vs_lig4_daSilva_crispr_screen/MAGeCK/LIG4_vs_plasmid'
+
+# Run MAGeCK comparing HAP1 LIG4 to HAP1 WT
+mageck test \
+	--norm-method 'none' \
+	--remove-zero 'none' \
+	-t 'LIG4_rep1,LIG4_rep2,LIG4_rep3' \
+	-c 'WT_rep1,WT_rep2,WT_rep3' \
+	-k '/lustre/scratch124/casm/team113/users/vo1/hap1_wt_vs_lig4_daSilva_crispr_screen/daSilva_normalised_counts_for_mageck.tsv' \
+	-n '/lustre/scratch124/casm/team113/users/vo1/hap1_wt_vs_lig4_daSilva_crispr_screen/MAGeCK/LIG4_vs_WT'
+
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   78.98 sec.
+    Max Memory :                                 844 MB
+    Average Memory :                             599.58 MB
+    Total Requested Memory :                     5000.00 MB
+    Delta Memory :                               4156.00 MB
+    Max Swap :                                   -
+    Max Processes :                              8
+    Max Threads :                                16
+    Run time :                                   81 sec.
+    Turnaround time :                            83 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file </lustre/scratch124/casm/team113/users/vo1/hap1_wt_vs_lig4_daSilva_crispr_screen/MAGeCK/mageck_stderr.e> for stderr output of this job.
+
