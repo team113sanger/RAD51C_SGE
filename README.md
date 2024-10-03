@@ -2,7 +2,8 @@
 
 This repository contains code and methods for the publication:
 
-**[High-resolution functional mapping of *RAD51C* by saturation genome editing](https://doi.org/10.1016/j.cell.2024.08.039)**
+**High-resolution functional mapping of *RAD51C* by saturation genome editing**<br>
+[*Cell*, 2024](https://doi.org/10.1016/j.cell.2024.08.039)
 
 ## rad51c_analysis_code.R
 
